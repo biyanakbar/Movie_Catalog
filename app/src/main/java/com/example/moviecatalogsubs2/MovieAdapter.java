@@ -36,15 +36,19 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.CategoryView
 
     @NonNull
     @Override
-    public CategoryViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public CategoryViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, final int i) {
         View itemRow = LayoutInflater.from(context).inflate(R.layout.item_movies, viewGroup, false);
         final CategoryViewHolder holderMovie = new CategoryViewHolder(itemRow);
 
         holderMovie.itemMovie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), DetailMovieActivity.class);
+                v.getContext().startActivities(intent);
+//                Toast.makeText(context, "" + getListMovie().get(i).getTitleMovie(), Toast.LENGTH_SHORT).show();
 //                Toast.makeText(context, "" + getListMovie().get(holderMovie.getAdapterPosition()).getTitleMovie(), Toast.LENGTH_SHORT).show();
             }
+
         });
 
         return holderMovie;
